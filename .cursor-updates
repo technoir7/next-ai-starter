@@ -12,3 +12,6 @@
 - Implemented Client Segmentation List component with categories for High Value, Frequent Bookers, At-Risk, and New Clients.
 - Added sorting, filtering, and segment selection functionality to the client list.
 - Created Storybook stories for Default View and Filtered View with appropriate sample data.
+- Created Appointment Calendar component with multi-provider scheduling, color-coded appointments, and status indicators.
+- Implemented conflict detection for overlapping appointments with visual feedback.
+- Added Storybook stories for Empty State, Populated State and Conflict State with sample appointment data.

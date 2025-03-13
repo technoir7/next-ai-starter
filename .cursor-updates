@@ -35,3 +35,5 @@
 - Implemented user registration functionality with a RegisterForm component, registration page, and API endpoint for creating new user accounts.
 - Added password hashing with bcrypt for secure user authentication and integrated with the existing sign-in flow.
 - Updated sign-in page to include a link to the registration page and added success message after registration.
+- Improved registration API endpoint with better error handling, validation, and SQLite database compatibility for local development.
+- Added integration tests to verify user registration functionality and database schema requirements.

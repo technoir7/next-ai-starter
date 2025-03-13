@@ -69,3 +69,19 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model Client {
+  id                 String   @id @default(cuid())
+  firstName          String
+  lastName           String
+  email              String?  @unique
+  phone              String?
+  address            String?
+  hairType           String?
+  skinType           String?
+  allergies          String?
+  preferredTreatments String?
+  birthday           DateTime?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}

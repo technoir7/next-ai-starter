@@ -18,3 +18,9 @@
 - Created Online Booking Widget with multi-step booking process, date/time selection, and validation.
 - Implemented confirmation flow with booking summary and service provider selection.
 - Added Storybook stories for Default State, Data Population, and Validation Errors.
+- Created Service Formula Panel component for recording detailed beauty service formulas with interactive checklists.
+- Implemented edit mode for formula editing, voice command feature with natural language processing, and dynamic checklists.
+- Added Storybook stories for Empty Formula, Populated Formula, and Edit Mode with sample data.
+- Implemented Inventory Management Dashboard with product list table, barcode scanning simulation, and low stock alerts.
+- Added interactive vendor details overlay that shows additional vendor information on click.
+- Created Storybook stories for Empty Inventory, Normal State with sample products, and Vendor Details Overlay demonstration.

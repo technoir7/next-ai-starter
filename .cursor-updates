@@ -15,3 +15,6 @@
 - Created Appointment Calendar component with multi-provider scheduling, color-coded appointments, and status indicators.
 - Implemented conflict detection for overlapping appointments with visual feedback.
 - Added Storybook stories for Empty State, Populated State and Conflict State with sample appointment data.
+- Created Online Booking Widget with multi-step booking process, date/time selection, and validation.
+- Implemented confirmation flow with booking summary and service provider selection.
+- Added Storybook stories for Default State, Data Population, and Validation Errors.

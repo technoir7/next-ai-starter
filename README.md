@@ -141,3 +141,163 @@ npx prisma migrate deploy                  # Deploy migrations to production
 ## 📝 License
 
 MIT License
+
+# BeautyCRM Pro
+
+A comprehensive management system for beauty salons, built with Next.js, TypeScript, Tailwind CSS, and Storybook.
+
+## Features
+
+BeautyCRM Pro is designed to streamline operations for beauty salons and spas with the following key modules:
+
+- **Client Management**: Store and manage client information, preferences, and history
+- **Appointment Management**: Schedule and manage appointments with multi-provider support
+- **Service Execution**: Track and manage beauty service formulas and execution details
+- **Inventory Management**: Track products, manage stock levels, and vendor information
+- **Marketing Automation**: Create targeted marketing campaigns for client segments
+- **Financial Management**: Track transactions and financial performance
+- **Notification System**: Send automated appointment reminders via multiple channels
+
+## Technology Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **UI Components**: React functional components
+- **Styling**: Tailwind CSS
+- **Backend**: tRPC for type-safe API routes
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: NextAuth.js
+- **Component Development**: Storybook
+- **State Management**: React Context API and custom hooks
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18.0.0 or higher
+- npm or yarn
+- PostgreSQL database
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/beautycrmPro.git
+   cd beautycrmPro
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Set up your environment variables:
+   ```
+   cp .env.example .env.local
+   ```
+   Edit the `.env.local` file with your database and authentication configuration.
+
+4. Set up the database:
+   ```bash
+   npx prisma migrate dev
+   ```
+
+5. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+6. Run Storybook to explore components:
+   ```bash
+   npm run storybook
+   # or
+   yarn storybook
+   ```
+
+## Project Structure
+
+```
+├── .storybook/           # Storybook configuration
+├── prisma/               # Prisma schema and migrations
+├── public/               # Static assets
+├── src/
+│   ├── app/              # Next.js app router pages
+│   ├── components/       # React components
+│   ├── lib/              # Shared utilities
+│   │   ├── api/          # API related code (tRPC)
+│   │   ├── db.ts         # Database client
+│   │   └── utils/        # Utility functions
+│   ├── stories/          # Storybook stories
+│   └── types/            # TypeScript type definitions
+└── tailwind.config.ts    # Tailwind CSS configuration
+```
+
+## Component Development with Storybook
+
+We use Storybook to develop and document components in isolation. Each component includes:
+
+- Multiple stories demonstrating different states
+- Interactive controls for testing
+- Comprehensive documentation
+- Responsive design testing
+
+To view the component library:
+
+```bash
+npm run storybook
+# or
+yarn storybook
+```
+
+## Deployment
+
+The application can be deployed to any platform that supports Next.js applications (Vercel, Netlify, etc.).
+
+1. Build the application:
+   ```bash
+   npm run build
+   # or
+   yarn build
+   ```
+
+2. Start the production server:
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
+
+## Testing
+
+Run the test suite with:
+
+```bash
+npm test
+# or
+yarn test
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Prisma](https://www.prisma.io/)
+- [Storybook](https://storybook.js.org/)
+- [tRPC](https://trpc.io/)

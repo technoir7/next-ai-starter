@@ -1,0 +1,103 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/Introduction" />
+
+# BeautyCRM Pro - Component Documentation
+
+Welcome to the Storybook documentation for BeautyCRM Pro, a comprehensive management system for beauty salons.
+
+## Component Library Overview
+
+BeautyCRM Pro is built with a modular component architecture, allowing easy customization and maintenance. This Storybook documents all the key components that make up the system.
+
+### Key Modules
+
+Our component library is organized into the following main modules:
+
+1. **Client Management**
+   - Client profile forms, segmentation lists, and details views
+   - Tools for managing client information, preferences, and history
+
+2. **Appointment Management**
+   - Calendar views, booking widgets, and scheduling tools
+   - Interfaces for managing salon appointments and availability
+
+3. **Service Management**
+   - Service formula panels and execution support
+   - Tools for tracking and managing beauty service details
+
+4. **Inventory Management**
+   - Product tracking, low stock alerts, and vendor management
+   - Interfaces for managing salon inventory
+
+5. **Marketing Automation**
+   - Campaign creation, segment targeting, and messaging templates
+   - Tools for creating and managing marketing campaigns
+
+6. **Financial Management**
+   - Transaction dashboards, reporting, and analytics
+   - Tools for tracking salon finances
+
+7. **Notifications & Reminders**
+   - Appointment reminders, automated notifications
+   - Client engagement tools
+
+### Using This Storybook
+
+- **Exploring Components**: Navigate through the sidebar to explore different components
+- **Interactive Demos**: Most components have interactive controls to test different states
+- **API Documentation**: Each component includes documentation on its props and usage
+- **Responsive Testing**: Use the viewport controls to test responsive behavior
+
+## Design Principles
+
+BeautyCRM Pro follows these core design principles:
+
+- **User-Centric Design**: Focused on salon professional workflows
+- **Accessibility**: Components are designed to be accessible by default
+- **Responsiveness**: All components adapt to different screen sizes
+- **Consistency**: Unified design language throughout the application
+- **Performance**: Optimized for speed and efficiency
+
+## Technology Stack
+
+- **Framework**: Next.js with App Router for server-rendered React
+- **Components**: Functional React components with TypeScript
+- **Styling**: Tailwind CSS for styling
+- **State Management**: React Context and custom hooks
+- **Authentication**: NextAuth.js with Prisma adapter
+- **Backend**: tRPC for type-safe API routes
+- **Database**: Prisma ORM with PostgreSQL
+
+## Getting Started for Developers
+
+To work with these components in your own code:
+
+1. Import components from their respective paths
+2. Provide necessary props and context providers
+3. Refer to the documentation for each component for specific usage examples
+
+Example:
+
+```tsx
+import { ClientProfileForm } from '@/components/ClientProfileForm';
+
+function MyPage() {
+  return (
+    <ClientProfileForm 
+      initialData={{ firstName: "John", lastName: "Doe" }}
+      onSubmit={(data) => console.log('Form submitted:', data)}
+    />
+  );
+}
+```
+
+## Testing API Interactions
+
+For components that interact with APIs, we provide mocking utilities in Storybook to simulate:
+
+- Live API responses
+- Slow network conditions
+- Error states
+
+Use the API response mode controls in relevant stories to test these states. 

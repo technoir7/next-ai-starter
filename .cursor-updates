@@ -32,3 +32,6 @@
 - Created Notification and Automated Reminder component with configurable settings panel and reminder simulation.
 - Developed API Mocking Support in Storybook with live, slow, and error response simulations.
 - Added comprehensive documentation including Introduction, README, and component usage examples.
+- Implemented user registration functionality with a RegisterForm component, registration page, and API endpoint for creating new user accounts.
+- Added password hashing with bcrypt for secure user authentication and integrated with the existing sign-in flow.
+- Updated sign-in page to include a link to the registration page and added success message after registration.

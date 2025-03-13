@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { ArrowLeft, Mail } from "lucide-react";
@@ -9,8 +9,23 @@ import Link from "next/link";
 function SignInContent() {
   const [email, setEmail] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/";
+  
+  // Check if user was redirected from registration
+  useEffect(() => {
+    if (searchParams.get("registered") === "true") {
+      setRegistrationSuccess(true);
+      
+      // Hide the success message after 5 seconds
+      const timer = setTimeout(() => {
+        setRegistrationSuccess(false);
+      }, 5000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,6 +54,14 @@ function SignInContent() {
             Enter your email to sign in or create an account
           </p>
         </div>
+
+        {registrationSuccess && (
+          <div className="rounded-lg bg-green-50 dark:bg-green-900/30 p-4 text-green-800 dark:text-green-200">
+            <p className="text-center text-sm font-medium">
+              Registration successful! You can now sign in with your email.
+            </p>
+          </div>
+        )}
 
         <div className="rounded-2xl bg-white dark:bg-neutral-800/50 p-8 shadow-xl">
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -82,6 +105,18 @@ function SignInContent() {
                 className="font-medium text-brandBlue-600 dark:text-brandBlue-400 hover:text-brandBlue-500"
               >
                 Privacy Policy
+              </Link>
+            </p>
+          </div>
+          
+          <div className="mt-6 pt-5 border-t border-gray-200 dark:border-gray-700">
+            <p className="text-center text-sm text-neutral-600 dark:text-neutral-400">
+              Don't have an account yet?{" "}
+              <Link
+                href="/auth/register"
+                className="font-medium text-brandBlue-600 dark:text-brandBlue-400 hover:text-brandBlue-500"
+              >
+                Register here
               </Link>
             </p>
           </div>

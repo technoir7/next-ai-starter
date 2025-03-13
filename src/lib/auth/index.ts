@@ -62,11 +62,11 @@ export const authOptions: NextAuthOptions = {
   providers: [
     EmailProvider({
       server: {
-        host: "smtp.resend.com",
-        port: 465,
+        host: process.env.EMAIL_SERVER_HOST || "smtp.resend.com",
+        port: Number(process.env.EMAIL_SERVER_PORT || 465),
         auth: {
-          user: "resend",
-          pass: process.env.EMAIL_SERVER_PASSWORD,
+          user: process.env.EMAIL_SERVER_USER || "resend",
+          pass: process.env.EMAIL_SERVER_PASSWORD || "",
         },
       },
       from: process.env.EMAIL_FROM || "onboarding@resend.dev",
@@ -126,6 +126,7 @@ export const authOptions: NextAuthOptions = {
     error: "/auth/error",
     verifyRequest: "/auth/verify",
   },
+  debug: process.env.NODE_ENV === 'development',
 };
 
 export const getServerAuthSession = () => getServerSession(authOptions);

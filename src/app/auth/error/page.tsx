@@ -2,12 +2,34 @@
 
 import React, { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 
 function ErrorContent() {
   const searchParams = useSearchParams();
   const error = searchParams.get("error");
+
+  const getErrorMessage = () => {
+    switch (error) {
+      case "AccessDenied":
+        return "Access denied. You do not have permission to access this resource.";
+      case "Configuration":
+        return "There is a problem with the authentication configuration. Please contact the administrator.";
+      case "CredentialsSignin":
+        return "The credentials you provided are invalid.";
+      case "OAuthSignin":
+      case "OAuthCallback":
+      case "OAuthCreateAccount":
+      case "EmailCreateAccount":
+        return "There was a problem with the authentication service. Please try again.";
+      case "EmailSignin":
+        return "The email sign-in link is invalid or has expired.";
+      case "SessionRequired":
+        return "You must be signed in to access this page.";
+      default:
+        return "An error occurred during authentication. Please try again.";
+    }
+  };
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950 px-4">
@@ -21,14 +43,25 @@ function ErrorContent() {
 
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-red-600 dark:text-red-500">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-100 dark:bg-red-900">
+            <AlertTriangle className="h-6 w-6 text-red-600 dark:text-red-400" />
+          </div>
+          
+          <h1 className="text-3xl font-bold text-red-600 dark:text-red-500">
             Authentication Error
           </h1>
+          
           <p className="mt-3 text-neutral-600 dark:text-neutral-300">
-            {error === "AccessDenied"
-              ? "Access denied."
-              : "An error occurred during authentication. Please try again."}
+            {getErrorMessage()}
           </p>
+          
+          {error === "Configuration" && (
+            <div className="mt-4 rounded-md bg-amber-50 dark:bg-amber-900/30 p-4 text-amber-800 dark:text-amber-200">
+              <p className="text-sm">
+                This could be due to incomplete email provider settings or missing environment variables.
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="flex justify-center">

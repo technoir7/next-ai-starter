@@ -6,3 +6,6 @@
 - Fixed dynamic route warning by adding force-dynamic config to root page
 - Added Storybook with Button component and stories, updated .cursorrules with Storybook guidelines
 - Captured screenshot of Button component stories in Storybook
+- Implemented Client Profile Form component with required fields and responsive layout using Tailwind CSS.
+- Created three Storybook stories for the Client Profile Form: Empty State, Populated State, and Error State.
+- Added validation logic for required fields and proper data format.

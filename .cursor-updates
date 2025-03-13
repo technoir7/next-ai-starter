@@ -9,3 +9,6 @@
 - Implemented Client Profile Form component with required fields and responsive layout using Tailwind CSS.
 - Created three Storybook stories for the Client Profile Form: Empty State, Populated State, and Error State.
 - Added validation logic for required fields and proper data format.
+- Implemented Client Segmentation List component with categories for High Value, Frequent Bookers, At-Risk, and New Clients.
+- Added sorting, filtering, and segment selection functionality to the client list.
+- Created Storybook stories for Default View and Filtered View with appropriate sample data.

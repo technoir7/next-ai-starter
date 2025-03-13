@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { AtSign, Lock, User, ArrowRight } from 'lucide-react';
 
 interface RegisterFormProps {

@@ -47,31 +47,40 @@ export async function POST(request: Request) {
     // Get current timestamp for created/updated
     const now = new Date();
 
-    // Create user with all required fields
-    const user = await prisma.user.create({
-      data: {
-        name,
-        email,
-        hashedPassword,
-        createdAt: now,
-        updatedAt: now,
-        emailVerified: null,
-        image: null,
-      },
-    });
+    try {
+      // Create user with all required fields
+      const user = await prisma.user.create({
+        data: {
+          name,
+          email,
+          hashedPassword,
+          createdAt: now,
+          updatedAt: now,
+          emailVerified: null,
+          image: null,
+        },
+      });
 
-    console.log('User created successfully:', { id: user.id, email: user.email });
+      console.log('User created successfully:', { id: user.id, email: user.email });
 
-    // Return success response (exclude sensitive data)
-    return NextResponse.json(
-      {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        createdAt: user.createdAt,
-      },
-      { status: 201 }
-    );
+      // Return success response (exclude sensitive data)
+      return NextResponse.json(
+        {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          createdAt: user.createdAt,
+        },
+        { status: 201 }
+      );
+    } catch (dbError) {
+      console.error('Database error creating user:', dbError);
+      // Check if it's a Prisma error and provide more specific information
+      return NextResponse.json(
+        { error: `Database error: ${dbError instanceof Error ? dbError.message : 'Unknown database error'}` },
+        { status: 500 }
+      );
+    }
   } catch (error) {
     // Log the detailed error for debugging
     console.error('Registration error:', error);
@@ -84,6 +93,12 @@ export async function POST(request: Request) {
           { status: 409 }
         );
       }
+      
+      // Return the actual error message for debugging
+      return NextResponse.json(
+        { error: `Error: ${error.message}` },
+        { status: 500 }
+      );
     }
     
     // Generic error response

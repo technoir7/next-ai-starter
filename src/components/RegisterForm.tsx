@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { AtSign, Lock, User, ArrowRight } from 'lucide-react';
+import { AtSign, Lock, User, ArrowRight, AlertCircle } from 'lucide-react';
 
 interface RegisterFormProps {
   onSubmit?: (data: { name: string; email: string; password: string }) => void;
@@ -253,6 +253,9 @@ export const RegisterForm = ({
             {error && (
               <div className="rounded-md bg-red-50 dark:bg-red-900 p-4">
                 <div className="flex">
+                  <div className="flex-shrink-0">
+                    <AlertCircle className="h-5 w-5 text-red-400" aria-hidden="true" />
+                  </div>
                   <div className="ml-3">
                     <h3 className="text-sm font-medium text-red-800 dark:text-red-200">
                       Registration Error

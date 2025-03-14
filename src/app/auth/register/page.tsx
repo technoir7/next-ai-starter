@@ -14,6 +14,8 @@ export default function RegisterPage() {
     setError(null);
 
     try {
+      console.log('Submitting registration:', { name: data.name, email: data.email });
+      
       const response = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -21,11 +23,14 @@ export default function RegisterPage() {
       });
 
       const result = await response.json();
+      console.log('Registration response:', { status: response.status, ok: response.ok });
 
       if (!response.ok) {
+        console.error('Registration failed:', result);
         throw new Error(result.error || 'Failed to create account');
       }
 
+      console.log('Registration successful, redirecting to sign-in');
       // Redirect to sign-in page after successful registration
       router.push('/auth/signin?registered=true');
     } catch (err) {

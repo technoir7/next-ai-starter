@@ -6,13 +6,13 @@ import { AtSign, Lock, User, ArrowRight, AlertCircle } from 'lucide-react';
 interface RegisterFormProps {
   onSubmit?: (data: { name: string; email: string; password: string }) => void;
   isLoading?: boolean;
-  error?: string;
+  error?: string | null;
 }
 
 export const RegisterForm = ({
   onSubmit = () => {},
   isLoading = false,
-  error,
+  error = null,
 }: RegisterFormProps) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -114,6 +114,25 @@ export const RegisterForm = ({
       }));
     }
   };
+
+  // Error message display - ensure it only renders when error has a truthy value
+  const errorDisplay = error ? (
+    <div className="rounded-md bg-red-50 dark:bg-red-900 p-4">
+      <div className="flex">
+        <div className="flex-shrink-0">
+          <AlertCircle className="h-5 w-5 text-red-400" aria-hidden="true" />
+        </div>
+        <div className="ml-3">
+          <h3 className="text-sm font-medium text-red-800 dark:text-red-200">
+            Registration Error
+          </h3>
+          <div className="mt-2 text-sm text-red-700 dark:text-red-300">
+            <p>{error}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  ) : null;
 
   return (
     <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -250,23 +269,7 @@ export const RegisterForm = ({
             </div>
 
             {/* Error message display */}
-            {error && (
-              <div className="rounded-md bg-red-50 dark:bg-red-900 p-4">
-                <div className="flex">
-                  <div className="flex-shrink-0">
-                    <AlertCircle className="h-5 w-5 text-red-400" aria-hidden="true" />
-                  </div>
-                  <div className="ml-3">
-                    <h3 className="text-sm font-medium text-red-800 dark:text-red-200">
-                      Registration Error
-                    </h3>
-                    <div className="mt-2 text-sm text-red-700 dark:text-red-300">
-                      <p>{error}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
+            {errorDisplay}
 
             {/* Submit button */}
             <div>

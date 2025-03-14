@@ -27,7 +27,8 @@ export default function RegisterPage() {
 
       if (!response.ok) {
         console.error('Registration failed:', result);
-        throw new Error(result.error || 'Failed to create account');
+        setError(result.error || 'An error occurred during registration');
+        return;
       }
 
       console.log('Registration successful, redirecting to sign-in');
@@ -46,7 +47,7 @@ export default function RegisterPage() {
       <RegisterForm 
         onSubmit={handleRegister}
         isLoading={isLoading}
-        error={error || undefined}
+        error={error}
       />
     </div>
   );
